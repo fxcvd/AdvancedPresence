@@ -4,7 +4,7 @@
 #
 #   main.py
 #   created at 06.06.21
-#   modifed at 07.06.21
+#   modified at 07.06.21
 #
 
 #Connect you plugin in config file
