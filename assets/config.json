@@ -1,0 +1,32 @@
+{
+    "aliases": {
+        "dota2": "Dota 2"
+    },
+
+    "browser": [
+        "Google Chrome",
+        "Safari"
+    ],
+
+    "browser_settings": {
+        "enable": true,
+        "plugins": ["youtube"]
+    },
+
+    "icons": {
+        "Visual Studio Code": "vsc",
+        "Terminal": "cmd",
+        "Google Chrome": "chrome",
+        "Safari": "safari",
+        "Finder": "finder",
+        "Discord": "discord",
+        "Steam": "steam",
+        "Dota 2": "dota2"
+    },
+
+    "ignore": [],
+
+    "discord": {
+        "app_id": "850940725305802783"
+    }
+}
