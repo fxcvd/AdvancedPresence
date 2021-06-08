@@ -11,6 +11,9 @@
 #U can make ur plugin
 #Check example
 
+from posixpath import split
+
+
 def example(title, url):
     #Advenced Presecnce call u plugin with title and url params
     #If u plugin works with github.com and url not equal github.com ur must be return None
@@ -28,6 +31,33 @@ def example(title, url):
             "state": title,
             "icon": "youtube",
             "details": "Watching YouTube"
+        }
+
+def github(title, url):
+    "·"
+    if "github.com" in url:
+        if " " not in title or ":" in title and "/" in title:
+            if ":" in title:
+                state = title.split(":")[0]
+
+            else:
+                state = title
+
+        elif " · " in title:
+            state = title.split(" · ")[-1]
+            
+        else:
+            return None
+        
+        return {
+            "button": {
+                "label": "Open repository",
+                "url": url
+            },
+
+            "state": state,
+            "icon": "github",
+            "details": "On GitHub.com"
         }
 
 def youtube(title, url):
