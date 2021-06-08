@@ -16,7 +16,7 @@
 
 ---
 ## Icons list
-[Icons](https://github.com/fxcvd/AdvancedPresence/blob/master/assets/iconsv2.png)
+![Icons](https://github.com/fxcvd/AdvancedPresence/blob/master/assets/iconsv2.png)
 - If ur need more, create ur app on discord developers add icons in rpc settings and change in config app_id   
 
 ---
