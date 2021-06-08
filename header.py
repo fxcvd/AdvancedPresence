@@ -15,6 +15,7 @@ from pypresence import Presence
 from time import sleep, time
 from sys import platform
 import json
+import os
 
 import plugins
 
@@ -40,6 +41,15 @@ def icon_for_app(app):
         return config["icons"][app]
     except:
         return "other"
+
+
+def get_aliase(app):
+    try:
+        app = config["aliases"][app]
+    except:
+        pass
+
+    return app
 
 
 with open("assets/config.json") as file:

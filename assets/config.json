@@ -5,12 +5,13 @@
 
     "browser": [
         "Google Chrome",
-        "Safari"
+        "Safari",
+        "Discord"
     ],
 
     "browser_settings": {
         "enable": true,
-        "plugins": ["youtube"]
+        "plugins": ["youtube", "github"]
     },
 
     "icons": {

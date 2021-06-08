@@ -2,7 +2,8 @@ import applescript
 from time import sleep
 
 def get_active_url():
-    return applescript.run("applescript/test.applescript").out
+    script = open("applescript/discord.js").read()
+    return applescript.run(script, javascript=True).out
 
 while True:
     print(get_active_url())

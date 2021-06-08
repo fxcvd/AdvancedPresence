@@ -11,31 +11,30 @@ from header import *
 
 
 class App(object):
-    def __init__(self, cfg=None):
+    def __init__(self):
         self.app = ""
         self.url = ""
 
-        print("AdvancedPresence\nby @fxcvd\n\nConfig file -> config.json\nDiscord -> inited success\n\nGood luck & Have fun")
+        os.system("clear")
+        print("AdvancedPresence")
+        print("by @fxcvd\n")
+        print("Config file -> config.json")
+        print("Discord -> inited success\n")
+        print("Good luck & Have fun")
 
-        if not cfg:
-            cfg = config
+        self._rpc_init()
+        self._app()
 
-        # init rich presence
-        self.rpc = Presence(cfg["discord"]["app_id"])
+    def _rpc_init(self):
+        self.rpc = Presence(config["discord"]["app_id"])
         self.rpc.connect()
 
-        self._app(cfg)
-
-    def _app(self, config):
+    def _app(self):
         while True:
-            app = get_active_window()
+            window = get_active_window()
+            app = get_aliase(window)
 
-            try:
-                app = config["aliases"][app]
-            except:
-                pass
-
-            if self.app != get_active_window() or app in config["browser"]:
+            if self.app != app or app in config["browser"]:
                 buttons = []
                 state = "by @fxcvd with ❤"
                 icon = icon_for_app(app)
@@ -50,24 +49,24 @@ class App(object):
                             continue
 
                         for plugin in config["browser_settings"]["plugins"]:
-                            p = getattr(plugins, plugin)
-                            rsp = p(title, url)
+                            plugin = getattr(plugins, plugin)
+                            plugin_response = plugin(title, url)
 
-                            if rsp:
-                                if rsp["button"]:
+                            if plugin_response:
+                                if plugin_response["button"]:
                                     buttons.append({
-                                        "label": rsp["button"]["label"],
-                                        "url": rsp["button"]["url"],
+                                        "label": plugin_response["button"]["label"],
+                                        "url": plugin_response["button"]["url"],
                                     })
 
-                                if rsp["state"]:
-                                    state = rsp["state"]
+                                if plugin_response["state"]:
+                                    state = plugin_response["state"]
 
-                                if rsp["icon"]:
-                                    icon = rsp["icon"]
+                                if plugin_response["icon"]:
+                                    icon = plugin_response["icon"]
 
-                                if rsp["details"]:
-                                    details = rsp["details"]
+                                if plugin_response["details"]:
+                                    details = plugin_response["details"]
 
                         self.url = url
 
@@ -92,17 +91,15 @@ class App(object):
                         details=details,
                         large_image=icon,
                         large_text=app,
-                        buttons=[{
-                            "label": "AdvancedPresence",
-                            "url": "https://github.com/fxcvd/AdvancedPresence"
-                        }],
+                        buttons=[buttons[-1]],
                         start=time()
                     )
 
                 self.app = app
 
-            sleep(60)
+            #sleep delay
+            sleep(5)
 
 
 if __name__ == "__main__":
-    App() #run
+    App()  # run
