@@ -15,7 +15,7 @@ from posixpath import split
 
 
 def example(title, url):
-    #Advenced Presecnce call u plugin with title and url params
+    #Advanced Presence call u plugin with title and url params
     #If u plugin works with github.com and url not equal github.com ur must be return None
     
     #Plugin code here...
